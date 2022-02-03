@@ -11,7 +11,7 @@ const refs = {
 let defoltValue = "Anonymous"
 
 // Объявляем стрелочную функцию, результатом вызова которой есть замена дефолтного зачения приветствия после введения пользователем имени в input
-const addText = () => !refs.inputRef.value ? refs.spanRef.textContent = defoltValue : refs.spanRef.textContent = refs.inputRef.value;
+const addText = () => !refs.inputRef.value.trim() ? refs.spanRef.textContent = defoltValue : refs.spanRef.textContent = refs.inputRef.value;
 
 // Вешаем слушателя событий на input и в качестве колбека передаем стрелочную функцию
 refs.inputRef.addEventListener('input', addText)
