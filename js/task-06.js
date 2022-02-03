@@ -12,13 +12,16 @@ const refs = {
 // Добавляем слушателя событий на input
 refs.inputRef.addEventListener('blur', onCountLetters);
 
-// Отдельная функция для посчета количества букв введенных пользователем (после потери фокуса)
+// Отдельная функция для посчета количества букв введенных пользователем (после потери фокуса) и добавления/удаления класса
 function onCountLetters() {
-    if (refs.inputRef.value.length >= 6) {
-        refs.inputRef.classList.add('valid')
-        refs.inputRef.classList.remove('invalid')
-    } else {
-        refs.inputRef.classList.remove('valid')
-        refs.inputRef.classList.add('invalid')
-    }
+    if (Number(refs.inputRef.dataset.length) === refs.inputRef.value.length) {
+        replaceClasses('valid', 'invalid');
+        return;
+    } 
+        replaceClasses('invalid', 'valid');
+}
+// Отдельная функция для добавления/удаления класса
+const replaceClasses = (classToAdd, classToRemove) => {
+        refs.inputRef.classList.remove(classToRemove)
+    refs.inputRef.classList.add(classToAdd)
 }
