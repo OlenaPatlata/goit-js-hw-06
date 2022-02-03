@@ -8,9 +8,7 @@
 
 const refs = {
     formRef: document.querySelector('.login-form'),
-    btnRef: document.querySelector('[type="submit"]')
 }
-
 
 const onSubmit = (event) => {
     event.preventDefault()
@@ -21,12 +19,11 @@ const onSubmit = (event) => {
         return;
     }
     const object = {};
-    object.name = emailInputRef.value;
-    object.password = passwordInputRef.value;
+    object[emailInputRef.name] = emailInputRef.value;
+    object[passwordInputRef.name] = passwordInputRef.value;
     console.log(object);
     refs.formRef.reset();
 }
 
 // Добавляем слушателя на форму по событию submit
 refs.formRef.addEventListener('submit', onSubmit);
-
